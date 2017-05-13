@@ -8,13 +8,20 @@
 % To quit Prolog, type "halt." at ?-
 % You may interrupt the execution by typing Ctrl-C and then "a" for abort.
 
+start(1/2/3/4/5/6/0/7/8).
+goal(1/2/3/4/5/6/7/8/0).
+
 solve :- 
    use_module(library(heaps)),
-   consult("E:/Assignment2/FindingRoute.pl"),
-   breadthFirstSearch(city("Arad"), city("Bucarest"), 100).
+   %consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/FindingRoute.pl"),
+   %breadthFirstSearch(city("Arad"), city("Bucarest"), 100).
    %depthFirstSearch(city("Arad"), city("Bucarest"), 100).
    %bestFirstSearch(city("Arad"), city("Bucarest"), 100).
    %aStar(city("Arad"), city("Bucarest"), 100).
+   consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
+   start(X),
+   goal(Y),
+   breadthFirstSearch(X, Y, 100).
 
 % Breath-First Search
 breadthFirstSearch(StartCity, GoalCity, MaxStep) :-
@@ -242,12 +249,12 @@ printSolutionSimple(Start, Goal, ProblemState):-
 printSolution(Start, Goal, ProblemState):-
    write("Cost: "), 
    state(Goal, _, _, Cost, _),
-   write(Cost), write(" - Reversed Path: "),
+   write(Cost), write(" - Path: "),
    printSolution1(Start, Goal, ProblemState).
 
 printSolution1(Start, Start, _):-
    write(" - "), write(Start), nl.
 printSolution1(Start, City, ProblemState):-
    state(City, ParentCity, _, _, _),
-   write(" - "), write(City),
-   printSolution1(Start, ParentCity, ProblemState).
+   printSolution1(Start, ParentCity, ProblemState),
+   write(" - "), write(City).
