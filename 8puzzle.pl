@@ -1,12 +1,11 @@
-link(State1, State2, Cost) :- 
+link(State1, State2, Cost) :-
   linkOneWay(State1, State2, Cost).
-link(State1, State2, Cost) :- 
+link(State1, State2, Cost) :-
   linkOneWay(State2, State1, Cost).
 
 linkOneWay(State2, State1, Cost) :-
   Cost is 1,
   linkOneWay(State1, State2).
-
 
 linkOneWay(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J).
 linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J).

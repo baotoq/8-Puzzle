@@ -8,7 +8,7 @@
 % To quit Prolog, type "halt." at ?-
 % You may interrupt the execution by typing Ctrl-C and then "a" for abort.
 
-start(1/2/3/4/5/6/0/7/8).
+start(2/5/3/1/0/6/4/7/8).
 goal(1/2/3/4/5/6/7/8/0).
 
 solve :- 
@@ -21,10 +21,10 @@ solve :-
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
    start(X),
    goal(Y),
-   breadthFirstSearch(X, Y, 100).
-   %depthFirstSearch(X, Y, 100).
-   %bestFirstSearch(X, Y, 100).
-   %aStar(X, Y, 100).
+   %breadthFirstSearch(X, Y, 1000).
+   %depthFirstSearch(X, Y, 1000).
+   %bestFirstSearch(X, Y, 1000).
+   aStar(X, Y, 1000).
 
 % Breath-First Search
 breadthFirstSearch(StartCity, GoalCity, MaxStep) :-
