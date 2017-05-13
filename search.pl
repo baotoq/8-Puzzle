@@ -9,7 +9,7 @@
 % You may interrupt the execution by typing Ctrl-C and then "a" for abort.
 
 start(2/5/3/1/0/6/4/7/8).
-start2(1/2/3/4/5/6/0/7/8).
+start2(1/2/3/0/5/6/4/7/8).
 goal(1/2/3/4/5/6/7/8/0).
 
 solve :-
@@ -20,12 +20,12 @@ solve :-
    %bestFirstSearch(city("Arad"), city("Bucarest"), 100).
    %aStar(city("Arad"), city("Bucarest"), 100).
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
-   start2(X),
+   start(X),
    goal(Y),
-   breadthFirstSearch(X, Y, 100).
+   %breadthFirstSearch(X, Y, 100).
    %depthFirstSearch(X, Y, 100).
    %bestFirstSearch(X, Y, 100).
-   %aStar(X, Y, 100).
+   aStar(X, Y, 100).
 
 % Breath-First Search
 breadthFirstSearch(StartCity, GoalCity, MaxStep) :-
