@@ -1,40 +1,46 @@
 link(State1, State2, Cost) :-
-  linkOneWay(State1, State2, Cost).
-link(State1, State2, Cost) :-
-  linkOneWay(State2, State1, Cost).
-
-linkOneWay(State2, State1, Cost) :-
   Cost is 1,
-  linkOneWay(State1, State2).
+  successor(State1, State2).
 
-linkOneWay(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/0/H/J).
-linkOneWay(A/B/0/D/E/F/H/I/J, A/0/B/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/0/E/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I).
+successor(State1, State2) :-
+  up(State1, State2).
 
-linkOneWay(A/B/C/0/E/F/H/I/J, 0/B/C/A/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/0/C/D/B/F/H/I/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/0/D/E/C/H/I/J).
-linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/0/E/F/D/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/0/F/H/E/J).
-linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/0/H/I/F).
+successor(State1, State2) :-
+  down(State1, State2).
 
-linkOneWay(A/0/C/D/E/F/H/I/J, A/C/0/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/F/0/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/H/J/0).
-linkOneWay(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J).
-linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J).
-linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J).
+successor(State1, State2) :-
+  left(State1, State2).
 
-linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/E/J/H/I/0).
-linkOneWay(0/B/C/D/E/F/H/I/J, D/B/C/0/E/F/H/I/J).
-linkOneWay(A/0/C/D/E/F/H/I/J, A/E/C/D/0/F/H/I/J).
-linkOneWay(A/B/0/D/E/F/H/I/J, A/B/F/D/E/0/H/I/J).
+successor(State1, State2) :-
+  right(State1, State2).
 
+up(A/B/C/0/E/F/H/I/J, 0/B/C/A/E/F/H/I/J).
+up(A/B/C/D/0/F/H/I/J, A/0/C/D/B/F/H/I/J).
+up(A/B/C/D/E/0/H/I/J, A/B/0/D/E/C/H/I/J).
+up(A/B/C/D/E/F/0/I/J, A/B/C/0/E/F/D/I/J).
+up(A/B/C/D/E/F/H/0/J, A/B/C/D/0/F/H/E/J).
+up(A/B/C/D/E/F/H/I/0, A/B/C/D/E/0/H/I/F).
+
+down(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J).
+down(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J).
+down(A/B/C/D/E/0/H/I/J, A/B/C/D/E/J/H/I/0).
+down(0/B/C/D/E/F/H/I/J, D/B/C/0/E/F/H/I/J).
+down(A/0/C/D/E/F/H/I/J, A/E/C/D/0/F/H/I/J).
+down(A/B/0/D/E/F/H/I/J, A/B/F/D/E/0/H/I/J).
+
+left(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J).
+left(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J).
+left(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/0/H/J).
+left(A/B/0/D/E/F/H/I/J, A/0/B/D/E/F/H/I/J).
+left(A/B/C/D/E/0/H/I/J, A/B/C/D/0/E/H/I/J).
+left(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I).
+
+right(A/0/C/D/E/F/H/I/J, A/C/0/D/E/F/H/I/J).
+right(A/B/C/D/0/F/H/I/J, A/B/C/D/F/0/H/I/J).
+right(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/H/J/0).
+right(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J).
+right(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J).
+right(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J).
 
 h(State1, State2, Hvalue) :- p_fcn(State1 , P), s_fcn(State2 , S), Hvalue is P + 3*S.
 
