@@ -21,7 +21,10 @@ solve :-
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
    start(X),
    goal(Y),
-   breadthFirstSearch(X, Y, 100).
+   %breadthFirstSearch(X, Y, 100).
+   %depthFirstSearch(X, Y, 100).
+   %bestFirstSearch(X, Y, 100).
+   aStar(X, Y, 100).
 
 % Breath-First Search
 breadthFirstSearch(StartCity, GoalCity, MaxStep) :-

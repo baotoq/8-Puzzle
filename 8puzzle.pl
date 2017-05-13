@@ -4,30 +4,26 @@ link(State1, State2, Cost) :-
 link(State1, State2, Cost) :-
   linkOneWay(State2, State1, Cost).
 
-linkOneWay(State1, State2, Cost) :-
-  Cost is 1,
-  linkOneWay(State1, State2).
+linkOneWay(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J, 1).
+linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J, 1).
+linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/0/H/J, 1).
+linkOneWay(A/B/0/D/E/F/H/I/J, A/0/B/D/E/F/H/I/J, 1).
+linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/0/E/H/I/J, 1).
+linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I, 1).
 
-linkOneWay(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/0/H/J).
-linkOneWay(A/B/0/D/E/F/H/I/J, A/0/B/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/0/E/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I).
+linkOneWay(A/B/C/0/E/F/H/I/J, 0/B/C/A/E/F/H/I/J, 1).
+linkOneWay(A/B/C/D/0/F/H/I/J, A/0/C/D/B/F/H/I/J, 1).
+linkOneWay(A/B/C/D/E/0/H/I/J, A/B/0/D/E/C/H/I/J, 1).
+linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/0/E/F/D/I/J, 1).
+linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/0/F/H/E/J, 1).
+linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/0/H/I/F, 1).
 
-linkOneWay(A/B/C/0/E/F/H/I/J, 0/B/C/A/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/0/C/D/B/F/H/I/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/0/D/E/C/H/I/J).
-linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/0/E/F/D/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/0/F/H/E/J).
-linkOneWay(A/B/C/D/E/F/H/I/0, A/B/C/D/E/0/H/I/F).
-
-linkOneWay(A/0/C/D/E/F/H/I/J, A/C/0/D/E/F/H/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/F/0/H/I/J).
-linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/H/J/0).
-linkOneWay(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J).
-linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J).
-linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J).
+linkOneWay(A/0/C/D/E/F/H/I/J, A/C/0/D/E/F/H/I/J, 1).
+linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/F/0/H/I/J, 1).
+linkOneWay(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/H/J/0, 1).
+linkOneWay(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J, 1).
+linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J, 1).
+linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J, 1).
 
 linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J).
 linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J).
