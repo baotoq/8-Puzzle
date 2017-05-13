@@ -1,8 +1,7 @@
-link(State1, State2, Cost) :-
-  linkOneWay(State1, State2, Cost).
-
-link(State1, State2, Cost) :-
-  linkOneWay(State2, State1, Cost).
+link(State1, State2, Cost) :- 
+   linkOneWay(State1, State2, Cost).
+link(State1, State2, Cost) :- 
+   linkOneWay(State2, State1, Cost).
 
 linkOneWay(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J, 1).
 linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J, 1).
@@ -25,12 +24,12 @@ linkOneWay(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J, 1).
 linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J, 1).
 linkOneWay(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J, 1).
 
-linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J).
-linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J).
-linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/E/J/H/I/0).
-linkOneWay(0/B/C/D/E/F/H/I/J, D/B/C/0/E/F/H/I/J).
-linkOneWay(A/0/C/D/E/F/H/I/J, A/E/C/D/0/F/H/I/J).
-linkOneWay(A/B/0/D/E/F/H/I/J, A/B/F/D/E/0/H/I/J).
+linkOneWay(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J, 1).
+linkOneWay(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J, 1).
+linkOneWay(A/B/C/D/E/0/H/I/J, A/B/C/D/E/J/H/I/0, 1).
+linkOneWay(0/B/C/D/E/F/H/I/J, D/B/C/0/E/F/H/I/J, 1).
+linkOneWay(A/0/C/D/E/F/H/I/J, A/E/C/D/0/F/H/I/J, 1).
+linkOneWay(A/B/0/D/E/F/H/I/J, A/B/F/D/E/0/H/I/J, 1).
 
 
 h(State1, State2, Hvalue) :- p_fcn(State1 , P), s_fcn(State2 , S), Hvalue is P + 3*S.
