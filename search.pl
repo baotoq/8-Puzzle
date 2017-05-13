@@ -9,9 +9,10 @@
 % You may interrupt the execution by typing Ctrl-C and then "a" for abort.
 
 start(2/5/3/1/0/6/4/7/8).
+start2(1/2/3/4/5/6/0/7/8).
 goal(1/2/3/4/5/6/7/8/0).
 
-solve :- 
+solve :-
    use_module(library(heaps)),
    %consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/FindingRoute.pl"),
    %breadthFirstSearch(city("Arad"), city("Bucarest"), 100).
@@ -19,12 +20,12 @@ solve :-
    %bestFirstSearch(city("Arad"), city("Bucarest"), 100).
    %aStar(city("Arad"), city("Bucarest"), 100).
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
-   start(X),
+   start2(X),
    goal(Y),
-   %breadthFirstSearch(X, Y, 1000).
-   %depthFirstSearch(X, Y, 1000).
-   %bestFirstSearch(X, Y, 1000).
-   aStar(X, Y, 1000).
+   breadthFirstSearch(X, Y, 100).
+   %depthFirstSearch(X, Y, 100).
+   %bestFirstSearch(X, Y, 100).
+   %aStar(X, Y, 100).
 
 % Breath-First Search
 breadthFirstSearch(StartCity, GoalCity, MaxStep) :-
@@ -39,10 +40,10 @@ initializeBrFS(StartCity , GoalCity) :-
    b_setval(fringe, Heap1),
    % add the Goal state
    retractall(goalState(_)),
-   assert(goalState(GoalCity)), 
+   assert(goalState(GoalCity)),
    retractall(state(_,_,_,_,_)).
 
-stepBrFS(N, MaxStep, false) :- N >= MaxStep, 
+stepBrFS(N, MaxStep, false) :- N >= MaxStep,
    % too far away !!!
    !.
 stepBrFS(N, MaxStep, ProblemState) :-
@@ -87,10 +88,10 @@ initializeDFS(StartCity , GoalCity) :-
    b_setval(fringe, Heap1),
    % add the Goal state
    retractall(goalState(_)),
-   assert(goalState(GoalCity)), 
+   assert(goalState(GoalCity)),
    retractall(state(_,_,_,_,_)).
 
-stepDFS(N, MaxStep, false) :- N >= MaxStep, 
+stepDFS(N, MaxStep, false) :- N >= MaxStep,
    % too far away !!!
    !.
 stepDFS(N, MaxStep, ProblemState) :-
@@ -133,15 +134,15 @@ initializeBestFS(StartCity, GoalCity) :-
    % add the Start state to the fringe
    empty_heap(Heap),
    h(StartCity, GoalCity, Hvalue),
-   Priority is Hvalue,	
+   Priority is Hvalue,
    add_to_heap(Heap, Priority, state(StartCity, empty, 0, 0, Hvalue), Heap1),
    b_setval(fringe, Heap1),
    % add the Goal state
    retractall(goalState(_)),
-   assert(goalState(GoalCity)), 
+   assert(goalState(GoalCity)),
    retractall(state(_,_,_,_,_)).
 
-stepBestFS(N, MaxStep, false) :- N >= MaxStep, 
+stepBestFS(N, MaxStep, false) :- N >= MaxStep,
    % too far away !!!
    !.
 stepBestFS(N, MaxStep, ProblemState) :-
@@ -191,10 +192,10 @@ initializeAStar(StartCity, GoalCity) :-
    b_setval(fringe, Heap1),
    % add the Goal state
    retractall(goalState(_)),
-   assert(goalState(GoalCity)), 
+   assert(goalState(GoalCity)),
    retractall(state(_,_,_,_,_)).
 
-stepAStar(N, MaxStep, false) :- N >= MaxStep, 
+stepAStar(N, MaxStep, false) :- N >= MaxStep,
    % too far away !!!
    !.
 stepAStar(N, MaxStep, ProblemState) :-
@@ -250,7 +251,7 @@ printSolutionSimple(Start, Goal, ProblemState):-
    write(Start), write(" - "), write(Goal), write(": "), write(ProblemState).
 
 printSolution(Start, Goal, ProblemState):-
-   write("Cost: "), 
+   write("Cost: "),
    state(Goal, _, _, Cost, _),
    write(Cost), write(" - Path: "),
    printSolution1(Start, Goal, ProblemState).
