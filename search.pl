@@ -21,12 +21,12 @@ solve :-
    %bestFirstSearch(city("Arad"), city("Bucarest"), 100).
    %aStar(city("Arad"), city("Bucarest"), 100).
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
-   start2(X),
+   start1(X),
    goal(Y),
    %breadthFirstSearch(X, Y, 100).
    %depthFirstSearch(X, Y, 100).
-   bestFirstSearch(X, Y, 100).
-   %aStar(X, Y, 100).
+   %bestFirstSearch(X, Y, 100).
+   aStar(X, Y, 100).
 
 %solve :-
    %use_module(library(heaps)),
@@ -239,10 +239,6 @@ addToFringeAStar([state(NextCity, City, NoStep, Distance, _)|T], N) :-
    b_setval(fringe, Heap1),
    addToFringeAStar(T, N).
 
-
-
-
-
 checkGoal(state(City,_,_,_,_), true) :-
    goalState(City).
 
@@ -256,18 +252,31 @@ adjustCost([state(NextCity, City, NoStep, Distance, X)|T], CostFromParent, [stat
    Cost is CostFromParent + Distance,
    adjustCost(T, CostFromParent, T1).
 
-printSolutionSimple(Start, Goal, ProblemState):-
+printSolutionSimple(Start, Goal, ProblemState) :-
    write(Start), write(" - "), write(Goal), write(": "), write(ProblemState).
 
-printSolution(Start, Goal, ProblemState):-
+printSolution(Start, Goal, ProblemState) :-
    write("Cost: "),
    state(Goal, _, _, Cost, _),
-   write(Cost), write(" - Path: "),
+   write(Cost), nl, write(" - Path: "),
    printSolution1(Start, Goal, ProblemState).
 
-printSolution1(Start, Start, _):-
+printSolution1(Start, Start, _) :-
    write(" - "), write(Start), nl.
-printSolution1(Start, City, ProblemState):-
+
+printSolution1(Start, City, ProblemState) :-
    state(City, ParentCity, _, _, _),
    printSolution1(Start, ParentCity, ProblemState),
-   write(" - "), write(City).
+   write(" - "), write(City), write(" - "), printStep(ParentCity, City), nl.
+
+printStep(Start, Goal) :-
+   up(Start, Goal), write(" up ").
+
+printStep(Start, Goal) :-
+   down(Start, Goal), write(" down ").
+
+printStep(Start, Goal) :-
+   left(Start, Goal), write(" left ").
+
+printStep(Start, Goal) :-
+   right(Start, Goal), write(" right ").
