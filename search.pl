@@ -24,10 +24,10 @@ solve :-
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
    start1(X),
    goal(Y),
-   %breadthFirstSearch(X, Y, 1000).
+   breadthFirstSearch(X, Y, 1000).
    %depthFirstSearch(X, Y, 1000).
    %bestFirstSearch(X, Y, 1000).
-   aStar(X, Y, 1000).
+   %aStar(X, Y, 1000).
 
 %solve :-
    %use_module(library(heaps)),

@@ -32,7 +32,7 @@ left(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I).
 
 right(State1, State2) :- left(State2, State1).
 
-h(State1, State2, Hvalue) :- p_fcn(State1 , P), s_fcn(State2 , S), Hvalue is P + 3*S.
+h(State1, State2, Hvalue) :- p_fcn(State1, P), s_fcn(State2, S), Hvalue is P + 3*S.
 
 p_fcn(A/B/C/D/E/F/G/H/I, P) :-
     a(A,Pa), b(B,Pb), c(C,Pc),
