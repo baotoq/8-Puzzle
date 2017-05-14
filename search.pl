@@ -10,7 +10,8 @@
 
 start1(2/5/3/1/0/6/4/7/8).
 start2(1/2/3/0/5/6/4/7/8).
-start3(1/2/3/4/5/6/0/7/8).
+start3(0/1/3/4/2/5/7/8/6).
+start4(1/2/3/4/5/6/0/7/8).
 goal(1/2/3/4/5/6/7/8/0).
 
 solve :-
@@ -23,10 +24,10 @@ solve :-
    consult("C:/Users/Neptune/Documents/GitHub/8-Puzzle/8puzzle.pl"),
    start1(X),
    goal(Y),
-   %breadthFirstSearch(X, Y, 100).
-   %depthFirstSearch(X, Y, 100).
-   %bestFirstSearch(X, Y, 100).
-   aStar(X, Y, 100).
+   %breadthFirstSearch(X, Y, 1000).
+   %depthFirstSearch(X, Y, 1000).
+   %bestFirstSearch(X, Y, 1000).
+   aStar(X, Y, 1000).
 
 %solve :-
    %use_module(library(heaps)),

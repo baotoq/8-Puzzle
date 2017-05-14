@@ -21,12 +21,7 @@ up(A/B/C/D/E/F/0/I/J, A/B/C/0/E/F/D/I/J).
 up(A/B/C/D/E/F/H/0/J, A/B/C/D/0/F/H/E/J).
 up(A/B/C/D/E/F/H/I/0, A/B/C/D/E/0/H/I/F).
 
-down(A/B/C/0/E/F/H/I/J, A/B/C/H/E/F/0/I/J).
-down(A/B/C/D/0/F/H/I/J, A/B/C/D/I/F/H/0/J).
-down(A/B/C/D/E/0/H/I/J, A/B/C/D/E/J/H/I/0).
-down(0/B/C/D/E/F/H/I/J, D/B/C/0/E/F/H/I/J).
-down(A/0/C/D/E/F/H/I/J, A/E/C/D/0/F/H/I/J).
-down(A/B/0/D/E/F/H/I/J, A/B/F/D/E/0/H/I/J).
+down(State1, State2) :- up(State2, State1).
 
 left(A/0/C/D/E/F/H/I/J, 0/A/C/D/E/F/H/I/J).
 left(A/B/C/D/0/F/H/I/J, A/B/C/0/D/F/H/I/J).
@@ -35,12 +30,7 @@ left(A/B/0/D/E/F/H/I/J, A/0/B/D/E/F/H/I/J).
 left(A/B/C/D/E/0/H/I/J, A/B/C/D/0/E/H/I/J).
 left(A/B/C/D/E/F/H/I/0, A/B/C/D/E/F/H/0/I).
 
-right(A/0/C/D/E/F/H/I/J, A/C/0/D/E/F/H/I/J).
-right(A/B/C/D/0/F/H/I/J, A/B/C/D/F/0/H/I/J).
-right(A/B/C/D/E/F/H/0/J, A/B/C/D/E/F/H/J/0).
-right(0/B/C/D/E/F/H/I/J, B/0/C/D/E/F/H/I/J).
-right(A/B/C/0/E/F/H/I/J, A/B/C/E/0/F/H/I/J).
-right(A/B/C/D/E/F/0/I/J, A/B/C/D/E/F/I/0/J).
+right(State1, State2) :- left(State2, State1).
 
 h(State1, State2, Hvalue) :- p_fcn(State1 , P), s_fcn(State2 , S), Hvalue is P + 3*S.
 
